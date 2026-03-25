@@ -11,10 +11,10 @@ A Raylib + Dear ImGui simulation template for C++. The codebase is written in a 
 ## Features
 
 - [x] **Infinite** 2D scene with **panning** and **zooming**.
-- [] **Dynamic grid** which automatically adjusts to the current zoom level.
+- [ ] **Dynamic grid** which automatically adjusts to the current zoom level.
 - [x] **Keyboard shortcuts** for controlling the simulation (**quit**, **reset**, **pause**).
 - [x] Collapsible **settings panel** which can be moved around.
-- [] **GPU rendering** for better performance.
-- [] **Operator overloading** for `Vector2`.
+- [ ] **GPU rendering** for better performance.
+- [ ] **Operator overloading** for `Vector2`.
 - [x] **Random float** and **integer** generation.
 - [x] Default **Gruvbox Dark** theme.

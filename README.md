@@ -1,6 +1,6 @@
 # Simulation Template
 
-A Raylib + Dear ImGui simulation template for C++.
+A Raylib + Dear ImGui simulation template for C++. The codebase is written in a minimalist, procedural style &mdash treating C++ as a "better C." It relies on POD structs and namespace-scoped functions rather than heavy object-oriented paradigms. It is also documented with [Doxygen](https://www.doxygen.nl/manual/docblocks.html).
 
 ## Libraries
 
@@ -10,10 +10,11 @@ A Raylib + Dear ImGui simulation template for C++.
 
 ## Features
 
-[x] **Infinite** 2D scene with **panning** and **zooming**.
-[] **Dynamic grid** which automatically adjusts to the current zoom level.
-[x] **Keyboard shortcuts** for controlling the simulation (**quit**, **reset**, **pause**).
-[x] Collapsible **settings panel** which can be moved around.
-[] **GPU rendering** for better performance.
-[x] **Random float** and **integer** generation.
-[x] Default **Gruvbox Dark** theme.
+- [x] **Infinite** 2D scene with **panning** and **zooming**.
+- [] **Dynamic grid** which automatically adjusts to the current zoom level.
+- [x] **Keyboard shortcuts** for controlling the simulation (**quit**, **reset**, **pause**).
+- [x] Collapsible **settings panel** which can be moved around.
+- [] **GPU rendering** for better performance.
+- [] **Operator overloading** for `Vector2`.
+- [x] **Random float** and **integer** generation.
+- [x] Default **Gruvbox Dark** theme.

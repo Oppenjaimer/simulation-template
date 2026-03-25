@@ -1,6 +1,6 @@
 # Simulation Template
 
-A Raylib + Dear ImGui simulation template for C++. The codebase is written in a minimalist, procedural style &mdash treating C++ as a "better C." It relies on POD structs and namespace-scoped functions rather than heavy object-oriented paradigms. It is also documented with [Doxygen](https://www.doxygen.nl/manual/docblocks.html).
+A Raylib + Dear ImGui simulation template for C++. The codebase is written in a minimalist, procedural style, treating C++ as a "better C." It relies on POD structs and namespace-scoped functions rather than heavy object-oriented paradigms. It is also documented with [Doxygen](https://www.doxygen.nl/manual/docblocks.html).
 
 ## Libraries
 

@@ -17,8 +17,8 @@ using namespace sim;
  */
 static void pan(Camera2D& camera, Vector2 delta, bool mouse) {
     float sensitivity = mouse ? config::pan_sensitivity_mouse : config::pan_sensitivity_keyboard;
-    delta = Vector2Scale(delta, -sensitivity / camera.zoom);
-    camera.target = Vector2Add(camera.target, delta);
+    delta *= -sensitivity / camera.zoom;
+    camera.target += delta;
 }
 
 /**
@@ -130,7 +130,8 @@ static void update(State& state) {
 static void draw(State& state) {
     (void)state;
 
-    DrawCircle(0, 0, 10, theme::orange);
+    DrawRectangleLines(0, 0, config::world_width, config::world_height, theme::bg4);
+    DrawCircle(config::world_width / 2.0f, config::world_height / 2.0f, 10, theme::orange);
 }
 
 /**
@@ -177,7 +178,7 @@ void sim::init(State& state) {
     // Initialize raylib
     SetTraceLogLevel(LOG_WARNING);
     SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT);
-    InitWindow(config::width, config::height, "Simulation");
+    InitWindow(config::screen_width, config::screen_height, "Simulation");
     SetTargetFPS(config::fps);
 
     // Initialize ImGui
@@ -195,7 +196,7 @@ void sim::init(State& state) {
 void sim::reset(State& state) {
     // Reset camera
     state.camera.offset = {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f};
-    state.camera.target = {0.0f, 0.0f};
+    state.camera.target = {config::world_width / 2.0f, config::world_height / 2.0f};
     state.camera.rotation = 0.0f;
     state.camera.zoom = 1.0f;
 }

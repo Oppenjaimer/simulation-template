@@ -5,9 +5,13 @@
  */
 namespace config {
     // Window
-    constexpr int width = 1280;                         ///< Initial window width (px).
-    constexpr int height = 720;                         ///< Initial window height (px).
+    constexpr int screen_width = 1280;                  ///< Initial window width (px).
+    constexpr int screen_height = 720;                  ///< Initial window height (px).
     constexpr int fps = 60;                             ///< Target frames per second.
+
+    // World
+    constexpr int world_width = 5000;                   ///< Simulation world width (px).
+    constexpr int world_height = 5000;                  ///< Simulation world height (px).
 
     // Settings panel
     constexpr int settings_collapse = false;            ///< Default state of the settings panel.

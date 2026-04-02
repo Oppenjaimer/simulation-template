@@ -4,10 +4,11 @@
 
 #include "simulation.hpp"
 #include "theme.hpp"
+#include "utils.hpp"
 
 #include <cmath>
 
-using namespace sim;
+using namespace simulation;
 
 /**
  * @brief Handle camera panning with specific delta vector.
@@ -174,12 +175,21 @@ static void gui(State& state) {
     ImGui::End();
 }
 
-void sim::init(State& state) {
+void simulation::init(State& state) {
     // Initialize raylib
     SetTraceLogLevel(LOG_WARNING);
     SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT);
-    InitWindow(config::screen_width, config::screen_height, "Simulation");
+    InitWindow(config::screen_width, config::screen_height, config::title);
     SetTargetFPS(config::fps);
+
+    // Set resources directory and app icon
+    bool found = utils::set_resource_dir("resources");
+    if (found) {
+        Image icon = LoadImage("icon.png");
+        SetWindowIcon(icon);
+    } else {
+        TraceLog(LOG_WARNING, "Unable to set resources directory");
+    }
 
     // Initialize ImGui
     rlImGuiSetup(true);
@@ -193,7 +203,7 @@ void sim::init(State& state) {
     reset(state);
 }
 
-void sim::reset(State& state) {
+void simulation::reset(State& state) {
     // Reset camera
     state.camera.offset = {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f};
     state.camera.target = {config::world_width / 2.0f, config::world_height / 2.0f};
@@ -201,7 +211,7 @@ void sim::reset(State& state) {
     state.camera.zoom = 1.0f;
 }
 
-void sim::run(State& state) {
+void simulation::run(State& state) {
     while (state.is_running && !WindowShouldClose()) {
         // Logic
         input(state);
@@ -224,7 +234,7 @@ void sim::run(State& state) {
     }
 }
 
-void sim::cleanup(State& state) {
+void simulation::cleanup(State& state) {
     (void)state;
 
     rlImGuiShutdown();

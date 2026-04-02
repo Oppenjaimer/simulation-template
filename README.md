@@ -4,7 +4,7 @@ A Raylib + Dear ImGui simulation template for C++. The codebase is written in a 
 
 ## Libraries
 
-* [Raylib](https://www.raylib.com/): Installed via package manager ([Arch](https://archlinux.org/packages/extra/x86_64/raylib/)).
+* [Raylib](https://www.raylib.com/): Compiled from source for OpenGL 4.3 support.
 * [Dear ImGui](https://github.com/ocornut/imgui): Cloned to `external/imgui`.
 * [rlImGui](https://github.com/raylib-extras/rlImGui): Cloned to `external/rlimgui`.
 
@@ -14,6 +14,9 @@ A Raylib + Dear ImGui simulation template for C++. The codebase is written in a 
 - [ ] **Dynamic grid** which automatically adjusts to the current zoom level.
 - [x] **Keyboard shortcuts** for controlling the simulation (**quit**, **reset**, **pause**).
 - [x] Collapsible **settings panel** which can be moved around.
-- [ ] **GPU rendering** for better performance.
 - [x] **Random float** and **integer** generation.
 - [x] Default **Gruvbox Dark** theme.
+
+## Usage
+
+Make sure to clone the repository with the `--recursive` option to also clone the submodules inside `external/`. Build the project using `make` and run the executable located in the `bin/` directory.

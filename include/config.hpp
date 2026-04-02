@@ -4,10 +4,13 @@
  * @brief Global configuration constants.
  */
 namespace config {
-    // Window
-    constexpr int screen_width = 1280;                  ///< Initial window width (px).
-    constexpr int screen_height = 720;                  ///< Initial window height (px).
+    // Application
     constexpr int fps = 60;                             ///< Target frames per second.
+    constexpr const char* title = "Simulation";         ///< Application window title.
+
+    // Screen
+    constexpr int screen_width = 1280;                  ///< Initial screen width (px).
+    constexpr int screen_height = 720;                  ///< Initial screen height (px).
 
     // World
     constexpr int world_width = 5000;                   ///< Simulation world width (px).

@@ -1,13 +1,13 @@
 #include "simulation.hpp"
 
-using namespace sim;
+using namespace simulation;
 
 /**
  * @brief Application entry point.
  * @returns Exit code.
  */
 int main() {
-    // Initialize global simulation state.
+    // Initialize global simulation state
     State state;
 
     // Execute simulation lifecycle

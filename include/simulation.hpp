@@ -7,7 +7,7 @@
 /**
  * @brief Global simulation logic and state management.
  */
-namespace sim {
+namespace simulation {
     /**
      * @brief Simulation runtime state.
      */

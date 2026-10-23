@@ -5,43 +5,27 @@
 
 #include "raymath.h" // Include after raylib.h
 
-/**
- * @brief Handle camera panning with specific delta vector.
- * @param camera Camera to modify.
- * @param delta Movement vector.
- * @param mouse Whether the input is from a mouse or keyboard.
- */
+// Camera panning with delta vector
 static void pan(Camera2D& camera, Vector2 delta, bool mouse) {
     float sensitivity = mouse ? config::pan_sensitivity_mouse : config::pan_sensitivity_keyboard;
     delta *= -sensitivity / camera.zoom;
     camera.target += delta;
 }
 
-/**
- * @brief Handle camera panning via left mouse click and drag.
- * @param camera Camera to modify.
- */
+// Camera panning with mouse
 static void pan(Camera2D& camera) {
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
         pan(camera, GetMouseDelta(), true);
 }
 
-/**
- * @brief Handle camera zooming with logarithmic scale.
- * @param camera Camera to modify.
- * @param value Zoom direction and amount.
- * @param mouse Whether the input is from a mouse or keyboard.
- */
+// Camera zooming with logarithmic scale
 static void zoom(Camera2D& camera, float value, bool mouse) {
     float sensitivity = mouse ? config::zoom_sensitivity_mouse : config::zoom_sensitivity_keyboard;
     float scale = sensitivity * value;
-    camera.zoom = Clamp(expf(logf(camera.zoom) + scale), config::zoom_min, config::zoom_max);
+    camera.zoom = Clamp(camera.zoom * expf(scale), config::zoom_min, config::zoom_max);
 }
 
-/**
- * @brief Handle camera zooming via mouse wheel.
- * @param camera Camera to modify.
- */
+// Camera zooming with mouse
 static void zoom(Camera2D& camera) {
     float wheel = GetMouseWheelMove();
     if (wheel == 0) return;
@@ -56,6 +40,7 @@ static void zoom(Camera2D& camera) {
 
 void camera::update(Camera2D& camera) {
     ImGuiIO& io = ImGui::GetIO();
+    float dt = GetFrameTime();
 
     // Window resize
     if (IsWindowResized())
@@ -71,21 +56,31 @@ void camera::update(Camera2D& camera) {
     if (!io.WantCaptureKeyboard) {
         // Pan
         Vector2 delta = {0, 0};
-        if (IsKeyDown(KEY_UP)) delta.y = 1;
-        if (IsKeyDown(KEY_DOWN)) delta.y = -1;
-        if (IsKeyDown(KEY_LEFT)) delta.x = 1;
+        if (IsKeyDown(KEY_UP))    delta.y = 1;
+        if (IsKeyDown(KEY_DOWN))  delta.y = -1;
+        if (IsKeyDown(KEY_LEFT))  delta.x = 1;
         if (IsKeyDown(KEY_RIGHT)) delta.x = -1;
-        pan(camera, delta, false);
+
+        if (delta.x != 0 || delta.y != 0) {
+            delta = Vector2Normalize(delta);
+            delta *= dt;
+
+            pan(camera, delta, false);
+        }
 
         // Zoom
-        Vector2 center_screen = {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f};
-        Vector2 center_world = GetScreenToWorld2D(center_screen, camera);
-        camera.offset = center_screen;
-        camera.target = center_world;
         float value = 0.0f;
-        if (IsKeyDown(KEY_SLASH)) value = -1.0f;
+        if (IsKeyDown(KEY_SLASH))         value = -1.0f;
         if (IsKeyDown(KEY_RIGHT_BRACKET)) value = 1.0f;
-        zoom(camera, value, false);
+
+        if (value != 0) {
+            Vector2 center_screen = {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f};
+            Vector2 center_world = GetScreenToWorld2D(center_screen, camera);
+            camera.offset = center_screen;
+            camera.target = center_world;
+
+            zoom(camera, value * dt, false);
+        }
     }
 }
 

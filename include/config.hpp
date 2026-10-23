@@ -1,8 +1,5 @@
 #pragma once
 
-/**
- * @brief Global configuration constants.
- */
 namespace config {
     // Application
     constexpr int fps = 60;                             ///< Target frames per second.
@@ -23,9 +20,9 @@ namespace config {
 
     // Camera
     constexpr float pan_sensitivity_mouse = 1.0f;       ///< Drag sensitivity for mouse panning.
-    constexpr float pan_sensitivity_keyboard = 10.0f;   ///< Key press sensitivity for keyboard panning.
+    constexpr float pan_sensitivity_keyboard = 600.0f;  ///< Key press sensitivity for keyboard panning.
     constexpr float zoom_sensitivity_mouse = 0.15f;     ///< Wheel sensitivity for mouse zooming.
-    constexpr float zoom_sensitivity_keyboard = 0.08f;  ///< Key press sensitivity for keyboard zooming.
+    constexpr float zoom_sensitivity_keyboard = 4.0f;   ///< Key press sensitivity for keyboard zooming.
     constexpr float zoom_min = 0.1f;                    ///< Minimum camera zoom level.
     constexpr float zoom_max = 10.0f;                   ///< Maximum camera zoom level.
 }

@@ -2,9 +2,6 @@
 
 #include "raylib.h"
 
-/**
- * @brief Gruvbox Dark color palette and UI theming.
- */
 namespace theme {
     // Background
     inline const Color bg0_hard = {29, 32, 33, 255};
@@ -41,8 +38,6 @@ namespace theme {
     inline const Color bright_orange = {254, 128, 25, 255};
     inline const Color bright_gray = {168, 153, 132, 255};
 
-    /**
-     * @brief Apply theme to ImGui style context.
-     */
+    // Apply theme to ImGui style context.
     void apply();
 }

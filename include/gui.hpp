@@ -3,9 +3,6 @@
 #include "state.hpp"
 
 namespace gui {
-    /**
-     * @brief Render ImGui interface.
-     * @param state Current simulation state.
-     */
+    // Render ImGui interface
     void render(State& state);
 }

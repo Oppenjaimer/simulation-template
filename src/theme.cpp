@@ -2,12 +2,8 @@
 
 #include "theme.hpp"
 
-/**
- * @brief Convert Color (0-255) to ImVec4 (0.0f-1.0f).
- * @param c Raylib color.
- * @returns ImVec4 color.
- */
-static ImVec4 to_imvec(const Color& c) {
+// Convert raylib Color (0-255) to ImVec4 (0.0f-1.0f)
+static constexpr ImVec4 to_imvec(Color c) {
     return ImVec4(c.r / 255.0f, c.g / 255.0f, c.b / 255.0f, c.a / 255.0f);
 }
 

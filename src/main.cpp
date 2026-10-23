@@ -7,10 +7,6 @@
 #include "theme.hpp"
 #include "utils.hpp"
 
-/**
- * @brief Handle application mouse and keyboard input.
- * @param state Current simulation state.
- */
 static void handle_input(State& state) {
     // Quit simulation
     if (IsKeyPressed(KEY_Q))
@@ -31,10 +27,6 @@ static void handle_input(State& state) {
     }
 }
 
-/**
- * @brief Application entry point.
- * @returns Exit code.
- */
 int main() {
     // Initialize raylib
     SetTraceLogLevel(LOG_WARNING);

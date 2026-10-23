@@ -2,19 +2,10 @@
 
 #include "raylib.h"
 
-/**
- * @brief Camera control.
- */
 namespace camera {
-    /**
-     * @brief Handle camera controls through mouse/keyboard input.
-     * @param camera Camera to modify.
-     */
+    // Control camera via mouse/keyboard input
     void update(Camera2D& camera);
 
-    /**
-     * @brief Reset camera to its default state.
-     * @param camera Camera to reset.
-     */
+    // Reset camera to its default state
     void reset(Camera2D& camera);
 };

@@ -2,9 +2,6 @@
 
 #include "config.hpp"
 
-/**
- * @brief Simulation runtime state.
- */
 struct State {
     bool is_running = true;                             ///< Whether the main loop is active.
     bool is_paused = false;                             ///< Whether the simulation is paused.
@@ -14,9 +11,6 @@ struct State {
 };
 
 namespace state {
-    /**
-     * @brief Reset state to its default configuration.
-     * @param state State to reset.
-     */
+    // Reset state to its default configuration
     void reset(State& state);
 }

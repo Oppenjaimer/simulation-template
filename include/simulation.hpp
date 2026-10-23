@@ -2,19 +2,10 @@
 
 #include "state.hpp"
 
-/**
- * @brief Simulation logic and render management.
- */
 namespace simulation {
-    /**
-     * @brief Update simulation logic.
-     * @param state Current simulation state.
-     */
+    // Update simulation logic
     void update(State& state);
 
-    /**
-     * @brief Draw simulation components.
-     * @param state Current simulation state.
-     */
+    // Draw simulation components
     void draw(State& state);
 }

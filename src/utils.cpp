@@ -4,13 +4,9 @@
 
 #include <random>
 
-/**
- * @brief Retrieve random number generator.
- * @returns Reference to the Mersenne Twister generator.
- */
+// Retrieve random number generator
 static std::mt19937& get_generator() {
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
+    static std::mt19937 gen(std::random_device{}());
     return gen;
 }
 
